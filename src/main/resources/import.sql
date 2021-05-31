@@ -1,0 +1,12 @@
+INSERT INTO time_of_prelection (id,end_of_prelection, start_of_prelection) VALUES (1,'10:00','11:45');
+INSERT INTO time_of_prelection (id,end_of_prelection, start_of_prelection) VALUES (2,'12:00','13:45');
+INSERT INTO time_of_prelection (id,end_of_prelection, start_of_prelection) VALUES (3,'14:00','15:45');
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (1, 'Java część 1',1);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (2, 'Java część 2',2);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (3, 'Java część 3',3);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (4, '.Net część 1',1);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (5, '.Net część 2',2);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (6, '.Net część 3',3);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (7, 'JavaScript część 1',1);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (8, 'JavaScript część 2',2);
+INSERT INTO prelection (id,subject_of_prelection,time_of_prelection_id) VALUES (9, 'JavaScript część 3',3);
