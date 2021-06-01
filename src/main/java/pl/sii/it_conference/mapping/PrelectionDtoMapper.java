@@ -7,14 +7,14 @@ import pl.sii.it_conference.entity.Prelection;
 
 
 @Component
-public class PrelectionDtoMapper extends AbstractConverter<PrelectionDto, Prelection> {
+public class PrelectionDtoMapper extends AbstractConverter<Prelection, PrelectionDto> {
 
     @Override
-    protected Prelection convert(PrelectionDto prelectionDto) {
-        return Prelection.builder()
-                .subjectOfPrelection(prelectionDto.getSubjectOfPrelection())
-                .timeOfPrelection(prelectionDto.getTimeOfPrelection())
-                .amountOfUsers(prelectionDto.getAmountOfUsers())
+    protected PrelectionDto convert(Prelection prelection) {
+        return PrelectionDto.builder()
+                .subjectOfPrelection(prelection.getSubjectOfPrelection())
+                .timeOfPrelection(prelection.getTimeOfPrelection())
+                .amountOfUsers(prelection.getAmountOfUsers())
                 .build();
     }
 }

@@ -6,14 +6,15 @@ import pl.sii.it_conference.dto.UserVO;
 import pl.sii.it_conference.entity.User;
 
 @Component
-public class UserVOMapper extends AbstractConverter<UserVO,User> {
+public class UserVOMapper extends AbstractConverter<User,UserVO> {
+
 
     @Override
-    protected User convert(UserVO userVO) {
-        return User.builder()
-                .id(userVO.getId())
-                .email(userVO.getEmail())
-                .login(userVO.getLogin())
+    protected UserVO convert(User user) {
+        return UserVO.builder()
+                .email(user.getEmail())
+                .id(user.getId())
+                .login(user.getLogin())
                 .build();
     }
 }

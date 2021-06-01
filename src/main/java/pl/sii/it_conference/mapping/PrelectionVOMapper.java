@@ -6,14 +6,15 @@ import pl.sii.it_conference.dto.PrelectionVO;
 import pl.sii.it_conference.entity.Prelection;
 
 @Component
-public class PrelectionVOMapper extends AbstractConverter<PrelectionVO, Prelection> {
+public class PrelectionVOMapper extends AbstractConverter<Prelection, PrelectionVO> {
+
     @Override
-    protected Prelection convert(PrelectionVO prelectionVO) {
-        return Prelection.builder()
-                .timeOfPrelection(prelectionVO.getTimeOfPrelection())
-                .subjectOfPrelection(prelectionVO.getSubjectOfPrelection())
-                .amountOfUsers(prelectionVO.getAmountOfUsers())
-                .id(prelectionVO.getId())
+    protected PrelectionVO convert(Prelection prelection) {
+        return PrelectionVO.builder()
+                .id(prelection.getId())
+                .subjectOfPrelection(prelection.getSubjectOfPrelection())
+                .timeOfPrelection(prelection.getTimeOfPrelection())
+                .amountOfUsers(prelection.getAmountOfUsers())
                 .build();
     }
 }
