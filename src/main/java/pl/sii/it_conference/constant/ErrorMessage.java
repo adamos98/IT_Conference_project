@@ -5,4 +5,6 @@ public final class ErrorMessage {
     public static final String USER_NOT_FOUND_BY_LOGIN = "Can't find user with login: ";
     public static final Object LOGIN_AND_EMAIL_ALREADY_REGISTERED = "Podany login i email są już zajęte";
     public static final String LOGIN_ALREADY_REGISTERED = "Podany login jest już zajęty";
+    public static final String PRELECTION_NOT_FOUND_BY_ID = "Nie istnieje prelekcja o id: ";
+    public static final String PRELECTION_IS_FULL = "Ta prelekcja nie ma już miejsc!";
 }
