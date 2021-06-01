@@ -8,7 +8,6 @@ import pl.sii.it_conference.constant.ErrorMessage;
 import pl.sii.it_conference.dto.PrelectionDto;
 import pl.sii.it_conference.dto.PrelectionVO;
 import pl.sii.it_conference.entity.Prelection;
-import pl.sii.it_conference.exceptions.FullPrelectionException;
 import pl.sii.it_conference.exceptions.NotFoundException;
 import pl.sii.it_conference.repository.PrelectionRepository;
 import pl.sii.it_conference.service.PrelectionService;
@@ -31,12 +30,13 @@ public class PrelectionServiceImpl implements PrelectionService {
     public PrelectionDto addUserToPrelection(Long id) {
         Prelection prelection = prelectionRepository.findById(id).orElseThrow(() ->
                 new NotFoundException(ErrorMessage.PRELECTION_NOT_FOUND_BY_ID + id));
-        if(prelection.getAmountOfUsers() == 5){
-            throw new FullPrelectionException(ErrorMessage.PRELECTION_IS_FULL);
-        }
         prelection.setAmountOfUsers(prelection.getAmountOfUsers()+1);
         Prelection updated = prelectionRepository.save(prelection);
 
         return modelMapper.map(updated,PrelectionDto.class);
+    }
+
+    public boolean checkIfPrelectionIsNotFull(Prelection prelection){
+        return prelection.getAmountOfUsers() != 5;
     }
 }

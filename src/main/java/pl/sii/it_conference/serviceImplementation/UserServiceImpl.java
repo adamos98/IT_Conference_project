@@ -39,7 +39,9 @@ public class UserServiceImpl implements UserService {
     public UserVO save(UserDto userDto) {
         User user = modelMapper.map(userDto,User.class);
         if((userRepository.findByLogin(userDto.getLogin()).isPresent() && userRepository.findByEmail(userDto.getEmail()).isPresent())) {
-            throw new LoginAndEmailRegisteredException((String) ErrorMessage.LOGIN_AND_EMAIL_ALREADY_REGISTERED);
+            user = userRepository.findByLogin(userDto.getLogin()).orElseThrow(() ->
+                     new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_ID + userDto.getLogin()));
+            return modelMapper.map(user,UserVO.class);
         }
         else if((userRepository.findByLogin(userDto.getLogin()).isPresent() && userRepository.findByEmail(userDto.getEmail()).isEmpty())){
             throw new LoginRegisteredException(ErrorMessage.LOGIN_ALREADY_REGISTERED);
