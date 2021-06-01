@@ -1,9 +1,10 @@
 package pl.sii.it_conference.entity;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Getter
@@ -17,11 +18,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Email
+    @NotBlank
     @Column(nullable = false, length = 50)
     private String email;
 
-    @NotNull
+    @NotBlank
     @Column(unique = true, nullable = false, length = 50)
     private String login;
 
