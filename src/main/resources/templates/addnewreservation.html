@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dokonaj rezerwacji na prelekcję</title>
+</head>
+<body>
+<h1>Dokonaj rezerwacji na prelekcję</h1>
+
+<form th:action="@{/addNewReservation}" th:method="post" th:object="${prelectionVO}">
+    <select th:field="*{id}" id="id">
+        <option th:each="prelection: ${prelectionList}" th:value="${prelection.id}"
+                th:text="${prelection.subjectOfPrelection} + ' (Od ' + ${prelection.timeOfPrelection.startOfPrelection} + ' Do ' + ${prelection.timeOfPrelection.endOfPrelection} + ')'">
+        </option>
+    </select>
+    <p>Podaj swój login: <input type="text" th:value="${login}" name="login"/></p>
+    <p>Podaj swój adres email: <input type="email" th:value="${email}" name="email"/></p>
+    <p><input type="submit" value="Potwierdź"/> <input type="reset" value="Reset"/></p>
+    <a href="/" class="blue-button">Wróć do strony głównej</a>
+</form>
+</body>
+</html>

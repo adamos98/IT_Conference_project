@@ -28,7 +28,7 @@
             <form action="#" th:action="@{/deleteReservation}" th:method="delete">
                 <input type="hidden" name="id" th:value="${reservationVO.getId()}"/>
                 <input type="hidden" name="login" th:value="${reservationVO.getUser().getLogin()}"/>
-                <button type="submit" id="submitButton" >Usuń moją rezerwację</button>
+                <button type="submit" id="submitButton">Usuń moją rezerwację</button>
             </form>
         </td>
     </tr>

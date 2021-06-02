@@ -1,13 +1,11 @@
 package pl.sii.it_conference.serviceImplementation;
 
 import lombok.AllArgsConstructor;
-import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
-import pl.sii.it_conference.dto.PrelectionDto;
 import pl.sii.it_conference.dto.ReservationDto;
 import pl.sii.it_conference.dto.ReservationVO;
 import pl.sii.it_conference.dto.UserDto;
@@ -25,14 +23,10 @@ import pl.sii.it_conference.service.PrelectionService;
 import pl.sii.it_conference.service.ReservationService;
 import pl.sii.it_conference.service.UserService;
 
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
 
@@ -74,6 +68,10 @@ public class ReservationServiceImpl implements ReservationService {
 
     @Override
     public Long deleteReservation(Long reservationId) {
+        Reservation reservation;
+        reservation = reservationRepository.findById(reservationId).orElseThrow(() ->
+                new NotFoundException(ErrorMessage.RESERVATION_NOT_FOUND_WITH_ID + reservationId));
+        reservation.getPrelection().setAmountOfUsers(reservation.getPrelection().getAmountOfUsers()-1);
         try{
             reservationRepository.deleteById(reservationId);
         }catch (EmptyResultDataAccessException ex){

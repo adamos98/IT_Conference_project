@@ -6,21 +6,21 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-
-    <table class="tg">
-        <tr>
-            <th width="120">Temat prelekcji</th>
-            <th width="120">Godzina rozpoczęcia</th>
-            <th width="120">Godzina zakończenia</th>
-            <th width="120">Ilość zapisanych osób</th>
-            <th><a href="/" class="blue-button">Wróć do strony głównej</a></th>
-        </tr>
-        <tr th:each="prelection: ${listOfPrelections}">
-            <td th:text="${prelection.subjectOfPrelection}"/>
-            <td th:text="${prelection.timeOfPrelection.getStartOfPrelection()}"/>
-            <td th:text="${prelection.timeOfPrelection.getEndOfPrelection()}"/>
-            <td th:text="${prelection.amountOfUsers}"/>
-        </tr>
-    </table>
+<h2>KONFERENCJA IT - 1 CZERWCA 2021</h2>
+<table class="tg">
+    <tr>
+        <th width="120">Temat prelekcji</th>
+        <th width="120">Godzina rozpoczęcia</th>
+        <th width="120">Godzina zakończenia</th>
+        <th width="120">Ilość zapisanych osób</th>
+        <th><a href="/" class="blue-button">Wróć do strony głównej</a></th>
+    </tr>
+    <tr th:each="prelection: ${listOfPrelections}">
+        <td th:text="${prelection.subjectOfPrelection}"/>
+        <td th:text="${prelection.timeOfPrelection.getStartOfPrelection()}"/>
+        <td th:text="${prelection.timeOfPrelection.getEndOfPrelection()}"/>
+        <td th:text="${prelection.amountOfUsers}"/>
+    </tr>
+</table>
 </body>
 </html>

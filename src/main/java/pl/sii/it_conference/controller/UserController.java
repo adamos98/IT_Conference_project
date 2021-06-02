@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserEmailDto;
 import pl.sii.it_conference.dto.UserVO;
 import pl.sii.it_conference.service.UserService;
 
@@ -39,8 +38,7 @@ public class UserController {
 
     @ApiOperation("Update user email")
     @PutMapping("/{login}")
-    public ResponseEntity<UserDto> updateEmail(@RequestParam String email,
-                                          @PathVariable String login){
+    public ResponseEntity<UserDto> updateEmail(@RequestParam String email, @PathVariable String login){
         return ResponseEntity.status(HttpStatus.OK).body(userService.updateEmail(email,login));
     }
 

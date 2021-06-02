@@ -7,16 +7,16 @@
 </head>
 <body>
 
-    <table class="tg">
-      <tr>
+<table class="tg">
+    <tr>
         <th width="120">Login użytkownika</th>
         <th width="120">Email użytkownika</th>
         <th><a href="/" class="blue-button">Wróć do strony głównej</a></th>
-      </tr>
-      <tr th:each="user: ${listOfUsers}">
+    </tr>
+    <tr th:each="user: ${listOfUsers}">
         <td th:text="${user.getLogin()}"/>
         <td th:text="${user.getEmail()}"/>
-      </tr>
-    </table>
+    </tr>
+</table>
 </body>
 </html>
