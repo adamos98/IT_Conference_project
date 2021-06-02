@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarejestrowani użytkownicy</title>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <table class="tg">
+      <tr>
+        <th width="120">Login użytkownika</th>
+        <th width="120">Email użytkownika</th>
+        <th><a href="/" class="blue-button">Wróć do strony głównej</a></th>
+      </tr>
+      <tr th:each="user: ${listOfUsers}">
+        <td th:text="${user.getLogin()}"/>
+        <td th:text="${user.getEmail()}"/>
+      </tr>
+    </table>
+</body>
+</html>

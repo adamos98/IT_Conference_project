@@ -52,10 +52,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateEmail(UserEmailDto userEmailDto, String login) {
+    public UserDto updateEmail(String email, String login) {
         User user = userRepository.findByLogin(login).orElseThrow(() ->
                 new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_LOGIN + login));
-        user.setEmail(userEmailDto.getEmail());
+        user.setEmail(email);
         User updated = userRepository.save(user);
 
         return modelMapper.map(updated,UserDto.class);

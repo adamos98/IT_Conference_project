@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Zaktualizuj swój email</title>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Zmień swój adres email</h1>
+    <form th:action="@{/updateUserEmail}" method="post">
+        <p>Podaj swój login: <input type="text" th:value="${login}"  name="login" /></p>
+      <p>Podaj nowy adres email: <input type="email" th:value="${email}" name="email"/></p>
+      <p><input type="submit" value="Potwierdź" /> <input type="reset" value="Reset" /></p>
+        <a href="/" class="blue-button">Wróć do strony głównej</a>
+    </form>
+
+</body>
+</html>

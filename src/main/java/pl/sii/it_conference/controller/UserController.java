@@ -37,11 +37,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @ApiOperation("Update user")
+    @ApiOperation("Update user email")
     @PutMapping("/{login}")
-    public ResponseEntity<UserDto> updateEmail(@RequestBody UserEmailDto userEmailDto,
+    public ResponseEntity<UserDto> updateEmail(@RequestParam String email,
                                           @PathVariable String login){
-        return ResponseEntity.status(HttpStatus.OK).body(userService.updateEmail(userEmailDto,login));
+        return ResponseEntity.status(HttpStatus.OK).body(userService.updateEmail(email,login));
     }
 
     @ApiOperation("Get all users")

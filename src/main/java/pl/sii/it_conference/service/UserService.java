@@ -13,7 +13,7 @@ public interface UserService {
 
     UserVO save(UserDto user);
 
-    UserDto updateEmail(UserEmailDto userEmailDto, String login);
+    UserDto updateEmail(String email, String login);
 
     List<UserDto> getAllUsers();
 
