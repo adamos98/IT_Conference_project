@@ -14,6 +14,6 @@ public interface ReservationService {
 
     List<ReservationDto> getAllReservations();
 
-    List<ReservationDto> showReservationsByLogin(String login);
+    List<ReservationVO> showReservationsByLogin(String login);
 
 }

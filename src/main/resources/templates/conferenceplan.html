@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conference plan</title>
+    <link href="../css/style.css" rel="stylesheet">
+</head>
+<body>
+
+    <table class="tg">
+        <tr>
+            <th width="120">Temat prelekcji</th>
+            <th width="120">Godzina rozpoczęcia</th>
+            <th width="120">Godzina zakończenia</th>
+            <th width="120">Ilość zapisanych osób</th>
+            <th><a href="/" class="blue-button">Wróć do strony głównej</a></th>
+        </tr>
+        <tr th:each="prelection: ${listOfPrelections}">
+            <td th:text="${prelection.subjectOfPrelection}"/>
+            <td th:text="${prelection.timeOfPrelection.getStartOfPrelection()}"/>
+            <td th:text="${prelection.timeOfPrelection.getEndOfPrelection()}"/>
+            <td th:text="${prelection.amountOfUsers}"/>
+        </tr>
+    </table>
+</body>
+</html>

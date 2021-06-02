@@ -28,7 +28,7 @@ public class ReservationController {
 
     @ApiOperation("Show all reservations by user login")
     @GetMapping("/showReservationsByLogin/{login}")
-    public ResponseEntity<List<ReservationDto>> showReservationsByLogin(@PathVariable String login){
+    public ResponseEntity<List<ReservationVO>> showReservationsByLogin(@PathVariable String login){
         return ResponseEntity.status(HttpStatus.OK).body(reservationService.showReservationsByLogin(login));
     }
 

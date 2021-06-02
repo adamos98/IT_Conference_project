@@ -89,8 +89,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<ReservationDto> showReservationsByLogin(String login) {
-        return modelMapper.map(reservationRepository.findAllByUser_Login(login), new TypeToken<List<ReservationDto>>(){
+    public List<ReservationVO> showReservationsByLogin(String login) {
+        return modelMapper.map(reservationRepository.findAllByUser_Login(login), new TypeToken<List<ReservationVO>>(){
         }.getType());
     }
 

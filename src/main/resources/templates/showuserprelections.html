@@ -3,27 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Prelekcje użytkownika</title>
-  <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 
 <form th:action="@{/showUserReservations}" method="get">
-  <p>Podaj swój login: <input type="text" th:value="${login}"  name="login" /></p>
-  <p><input type="submit" value="Potwierdź" /> <input type="reset" value="Reset" /></p>
-  <a href="/" class="blue-button">Wróć do strony głównej</a>
+    <p>Podaj swój login: <input type="text" th:value="${login}" name="login"/></p>
+    <p><input type="submit" value="Potwierdź"/> <input type="reset" value="Reset"/></p>
+    <a href="/" class="blue-button">Wróć do strony głównej</a>
 </form>
 
 <table class="tg">
-  <tr>
-    <th width="120">Temat prelekcji</th>
-    <th width="120">Data rozpoczęcia prelekcji</th>
-    <th width="120">Data zakończenia prelekcji</th>
-  </tr>
-  <tr th:each="reservationDto: ${listOfReservations}">
-    <td th:text="${reservationDto.getPrelection().getSubjectOfPrelection()}"/>
-    <td th:text="${reservationDto.getPrelection().getTimeOfPrelection().getStartOfPrelection()}"/>
-    <td th:text="${reservationDto.getPrelection().getTimeOfPrelection().getEndOfPrelection()}"/>
-  </tr>
+    <tr>
+        <th width="120">Temat prelekcji</th>
+        <th width="120">Data rozpoczęcia prelekcji</th>
+        <th width="120">Data zakończenia prelekcji</th>
+        <th width="120">Usuń swoją rezerwację</th>
+    </tr>
+    <tr th:each="reservationVO: ${listOfReservations}">
+        <td th:text="${reservationVO.getPrelection().getSubjectOfPrelection()}"/>
+        <td th:text="${reservationVO.getPrelection().getTimeOfPrelection().getStartOfPrelection()}"/>
+        <td th:text="${reservationVO.getPrelection().getTimeOfPrelection().getEndOfPrelection()}"/>
+        <td>
+            <form action="#" th:action="@{/deleteReservation}" th:method="delete">
+                <input type="hidden" name="id" th:value="${reservationVO.getId()}"/>
+                <input type="hidden" name="login" th:value="${reservationVO.getUser().getLogin()}"/>
+                <button type="submit" id="submitButton" >Usuń moją rezerwację</button>
+            </form>
+        </td>
+    </tr>
 </table>
 
 </body>
