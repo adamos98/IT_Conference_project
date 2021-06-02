@@ -18,8 +18,7 @@ public class MapperConfig {
                 .getConfiguration()
                 .setMatchingStrategy(MatchingStrategies.STRICT)
                 .setFieldMatchingEnabled(true)
-                .setSkipNullEnabled(true)
-                .setFieldAccessLevel(org.modelmapper.config.Configuration.AccessLevel.PRIVATE);
+                .setSkipNullEnabled(true);
 
         converters.forEach(modelMapper::addConverter);
 

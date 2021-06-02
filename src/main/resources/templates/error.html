@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Error</title>
-  <link href="../css/style.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-  Wystąpił błąd<br>
-  <a href="/" class="blue-button">Wróć do strony głównej</a>
+<h1>My Thymeleaf Error Page</h1>
+<table>
+    <tr>
+        <td>Date</td>
+        <td th:text="${message}"/>
+    </tr>
+    <tr>
+        <td>Path</td>
+        <td th:text="${httpStatus}"/>
+    </tr>
+    <tr>
+        <td>Error</td>
+        <td th:text="${zonedDateTime}"/>
+    </tr>
+</table>
+<a href="/" class="blue-button">Wróć do strony głównej</a>
 </body>
 </html>
