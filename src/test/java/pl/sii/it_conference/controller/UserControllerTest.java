@@ -87,15 +87,22 @@ class UserControllerTest {
     }
 
     @Test
-    void updateEmail() throws Exception {
-        UserDto userDto = new UserDto(TestConst.UPDATEDEMAIL, TestConst.LOGIN);
-        when(userService.updateEmail(TestConst.UPDATEDEMAIL,TestConst.LOGIN)).thenReturn(userDto);
+    void updateEmailTest() throws Exception {
+        when(userService.updateEmail(ModelUtils.getUserDto())).thenReturn(ModelUtils.getUserDto());
 
-        mockMvc.perform(put(userLink + "/{login}/",TestConst.LOGIN)
-                .param("email", TestConst.UPDATEDEMAIL))
-                .andExpect(status().isOk());
+        String content = "{\n"
+                + "  \"email\": \"tester@gmail.com\",\n"
+                + "  \"login\": \"Tester\"\n"
+                + "}";
 
-        verify(userService).updateEmail(TestConst.UPDATEDEMAIL,TestConst.LOGIN);
+        mockMvc.perform(put(userLink + "/updateLogin")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.login").value(TestConst.LOGIN))
+                .andExpect(jsonPath("$.email").value(TestConst.EMAIL));
+
+       verify(userService).updateEmail(ModelUtils.getUserDto());
     }
 
     @Test
