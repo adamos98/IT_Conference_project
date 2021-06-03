@@ -6,10 +6,8 @@ import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserEmailDto;
 import pl.sii.it_conference.dto.UserVO;
 import pl.sii.it_conference.entity.User;
-import pl.sii.it_conference.exceptions.LoginAndEmailRegisteredException;
 import pl.sii.it_conference.exceptions.LoginRegisteredException;
 import pl.sii.it_conference.exceptions.NotFoundException;
 import pl.sii.it_conference.repository.UserRepository;
@@ -52,10 +50,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserDto updateEmail(String email, String login) {
-        User user = userRepository.findByLogin(login).orElseThrow(() ->
-                new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_LOGIN + login));
-        user.setEmail(email);
+    public UserDto updateEmail(UserDto userDto) {
+        User user = userRepository.findByLogin(userDto.getLogin()).orElseThrow(() ->
+                new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_LOGIN + userDto.getLogin()));
+        user.setEmail(userDto.getEmail());
         User updated = userRepository.save(user);
 
         return modelMapper.map(updated,UserDto.class);

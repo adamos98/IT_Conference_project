@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.sii.it_conference.dto.UserDto;
 import pl.sii.it_conference.service.UserService;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -24,7 +25,8 @@ public class UserThymeleafController {
     public String updateUserEmail(@RequestParam String email,@RequestParam String login, Model model){
         model.addAttribute("email", email);
         model.addAttribute("login", login);
-        userService.updateEmail(email,login);
+        UserDto userDto = new UserDto(login,email);
+        userService.updateEmail(userDto);
         return "redirect:/";
     }
 
