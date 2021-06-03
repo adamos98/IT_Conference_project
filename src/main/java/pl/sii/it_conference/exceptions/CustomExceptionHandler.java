@@ -14,10 +14,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {NotFoundException.class})
     public String handleNotFoundException(NotFoundException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.NOT_FOUND,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.NOT_FOUND,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.NOT_FOUND);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
@@ -27,10 +27,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {NotDeletedException.class})
     public String handleNotDeletedException(NotDeletedException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.BAD_REQUEST,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.BAD_REQUEST);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
@@ -40,10 +40,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {FullPrelectionException.class})
     public String handleFullPrelectionException(FullPrelectionException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.BAD_REQUEST,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.BAD_REQUEST);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
@@ -53,10 +53,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {LoginAndEmailRegisteredException.class})
     public String handleLoginAndEmailRegisteredException(LoginAndEmailRegisteredException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.BAD_REQUEST,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.BAD_REQUEST);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
@@ -66,10 +66,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {LoginRegisteredException.class})
     public String handleLoginRegisteredException(LoginRegisteredException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.BAD_REQUEST,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.BAD_REQUEST);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
@@ -79,10 +79,10 @@ public class CustomExceptionHandler {
 
     @ExceptionHandler(value = {UserAlreadyReservedPrelectionOnThatTimeException.class})
     public String handleUserAlreadyReservedPrelectionOnThatTimeException(UserAlreadyReservedPrelectionOnThatTimeException e, Model model){
-        ApiException apiException = new ApiException(
-                e.getMessage(),
-                HttpStatus.BAD_REQUEST,
-                ZonedDateTime.now(ZoneId.of("Z")));
+//        ApiException apiException = new ApiException(
+//                e.getMessage(),
+//                HttpStatus.BAD_REQUEST,
+//                ZonedDateTime.now(ZoneId.of("Z")));
         model.addAttribute("message",e.getMessage());
         model.addAttribute("httpStatus",HttpStatus.BAD_REQUEST);
         model.addAttribute("zonedDateTime",ZonedDateTime.now(ZoneId.of("Z")));
