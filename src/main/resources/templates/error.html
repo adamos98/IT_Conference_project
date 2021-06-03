@@ -6,18 +6,18 @@
     <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
-<h1>My Thymeleaf Error Page</h1>
+<h1>Błąd !</h1>
 <table>
     <tr>
-        <td>Date</td>
+        <td>Treść błędu </td>
         <td th:text="${message}"/>
     </tr>
     <tr>
-        <td>Path</td>
+        <td>HttpStatus</td>
         <td th:text="${httpStatus}"/>
     </tr>
     <tr>
-        <td>Error</td>
+        <td>Czas wystąpienia błędu</td>
         <td th:text="${zonedDateTime}"/>
     </tr>
 </table>
