@@ -1,6 +1,5 @@
 package pl.sii.it_conference.controller;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -14,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.sii.it_conference.ModelUtils;
 import pl.sii.it_conference.TestConst;
-import pl.sii.it_conference.dto.UserDto;
 import pl.sii.it_conference.dto.UserVO;
 import pl.sii.it_conference.service.UserService;
 
