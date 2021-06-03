@@ -6,7 +6,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserVO;
+import pl.sii.it_conference.dto.UserWithIdDto;
 import pl.sii.it_conference.entity.User;
 import pl.sii.it_conference.exceptions.LoginRegisteredException;
 import pl.sii.it_conference.exceptions.NotFoundException;
@@ -22,31 +22,31 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public UserVO getUserById(Long id) {
+    public UserWithIdDto getUserById(Long id) {
         return modelMapper.map(userRepository.findById(id).orElseThrow(() ->
-        new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_ID + id)),UserVO.class);
+        new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_ID + id)), UserWithIdDto.class);
     }
 
     @Override
-    public UserVO findByLogin(String login) {
+    public UserWithIdDto findByLogin(String login) {
         return modelMapper.map(userRepository.findByLogin(login).orElseThrow(() ->
-                new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_LOGIN + login)),UserVO.class);
+                new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_LOGIN + login)), UserWithIdDto.class);
     }
 
     @Override
-    public UserVO save(UserDto userDto) {
+    public UserWithIdDto save(UserDto userDto) {
         User user = modelMapper.map(userDto,User.class);
         if((userRepository.findByLogin(userDto.getLogin()).isPresent() && userRepository.findByEmail(userDto.getEmail()).isPresent())) {
             user = userRepository.findByLogin(userDto.getLogin()).orElseThrow(() ->
                      new NotFoundException(ErrorMessage.USER_NOT_FOUND_BY_ID + userDto.getLogin()));
-            return modelMapper.map(user,UserVO.class);
+            return modelMapper.map(user, UserWithIdDto.class);
         }
         else if((userRepository.findByLogin(userDto.getLogin()).isPresent() && userRepository.findByEmail(userDto.getEmail()).isEmpty())){
             throw new LoginRegisteredException(ErrorMessage.LOGIN_ALREADY_REGISTERED);
         }
         userRepository.save(user);
 
-        return modelMapper.map(user,UserVO.class);
+        return modelMapper.map(user, UserWithIdDto.class);
     }
 
     @Override

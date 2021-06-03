@@ -1,16 +1,16 @@
 package pl.sii.it_conference.service;
 
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserVO;
+import pl.sii.it_conference.dto.UserWithIdDto;
 
 import java.util.List;
 public interface UserService {
 
-    UserVO getUserById(Long id);
+    UserWithIdDto getUserById(Long id);
 
-    UserVO findByLogin(String login);
+    UserWithIdDto findByLogin(String login);
 
-    UserVO save(UserDto user);
+    UserWithIdDto save(UserDto user);
 
     UserDto updateEmail(UserDto user);
 

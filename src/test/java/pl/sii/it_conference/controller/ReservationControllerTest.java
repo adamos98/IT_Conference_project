@@ -43,7 +43,7 @@ class ReservationControllerTest {
     @Test
     void addNewReservation() throws Exception {
         when(reservationService.addNewReservation(ModelUtils.getUserDto(),1L))
-                .thenReturn(ModelUtils.getReservationVO());
+                .thenReturn(ModelUtils.getReservationWithIdDto());
         String content = "{\n"
                 + "  \"email\": \"tester@gmail.com\",\n"
                 + "  \"login\": \"Tester\"\n"
@@ -58,7 +58,7 @@ class ReservationControllerTest {
 
     @Test
     void showReservationsByLogin() throws Exception {
-        when(reservationService.showReservationsByLogin(TestConst.LOGIN)).thenReturn(List.of(ModelUtils.getReservationVO()));
+        when(reservationService.showReservationsByLogin(TestConst.LOGIN)).thenReturn(List.of(ModelUtils.getReservationWithIdDto()));
         mockMvc.perform(get(reservationLink + "/showReservationsByLogin/{login}",TestConst.LOGIN))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))

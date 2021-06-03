@@ -7,8 +7,8 @@ import java.sql.Time;
 
 public class ModelUtils {
 
-    public static UserVO getUserVO(){
-        return UserVO.builder()
+    public static UserWithIdDto getUserWithIdDto(){
+        return UserWithIdDto.builder()
                 .id(1L)
                 .email(TestConst.EMAIL)
                 .login(TestConst.LOGIN)
@@ -22,8 +22,8 @@ public class ModelUtils {
                 .build();
     }
 
-    public static PrelectionVO getPrelectionVO() {
-        return PrelectionVO.builder()
+    public static PrelectionWithIdDto getPrelectionWithIdDto() {
+        return PrelectionWithIdDto.builder()
                 .id(1L)
                 .subjectOfPrelection(TestConst.SUBJECTOFPRELECTION)
                 .amountOfUsers(0L)
@@ -47,8 +47,8 @@ public class ModelUtils {
                 .build();
     }
 
-    public static ReservationVO getReservationVO(){
-        return ReservationVO.builder()
+    public static ReservationWithIdDto getReservationWithIdDto(){
+        return ReservationWithIdDto.builder()
                 .id(1L)
                 .prelection(getPrelectionDto())
                 .user(getUserDto())

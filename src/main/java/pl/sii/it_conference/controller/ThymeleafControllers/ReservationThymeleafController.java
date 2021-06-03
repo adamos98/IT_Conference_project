@@ -3,12 +3,10 @@ package pl.sii.it_conference.controller.ThymeleafControllers;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.sii.it_conference.dto.PrelectionVO;
-import pl.sii.it_conference.dto.ReservationVO;
+import pl.sii.it_conference.dto.PrelectionWithIdDto;
+import pl.sii.it_conference.dto.ReservationWithIdDto;
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.entity.User;
 import pl.sii.it_conference.service.PrelectionService;
 import pl.sii.it_conference.service.ReservationService;
 import springfox.documentation.annotations.ApiIgnore;
@@ -22,8 +20,8 @@ public class ReservationThymeleafController {
 
     @ApiIgnore
     @GetMapping("/showUserReservations")
-    public String showReservations(@RequestParam(required = false) String login, Model model, ReservationVO reservationVO){
-        model.addAttribute("reservationVO",reservationVO);
+    public String showReservations(@RequestParam(required = false) String login, Model model, ReservationWithIdDto reservationWithIdDto){
+        model.addAttribute("reservationWithIdDto", reservationWithIdDto);
         model.addAttribute("login",login);
         model.addAttribute("listOfReservations", reservationService.showReservationsByLogin(login));
         return "showuserprelections";
@@ -32,8 +30,8 @@ public class ReservationThymeleafController {
     @ApiIgnore
     @PostMapping("/deleteReservation")
     public String deleteReservation(@RequestParam(required = false) String login,@RequestParam(required = false) Long id,
-                                    Model model, ReservationVO reservationVO){
-        model.addAttribute("reservationVO",reservationVO);
+                                    Model model, ReservationWithIdDto reservationWithIdDto){
+        model.addAttribute("reservationWithIdDto", reservationWithIdDto);
         model.addAttribute("id",id);
         model.addAttribute("login",login);
         reservationService.deleteReservation(id);
@@ -55,9 +53,9 @@ public class ReservationThymeleafController {
 
     @ApiIgnore
     @GetMapping("/addNewReservationView")
-    public String addNewReservationView(String login, String email, Model model, PrelectionVO prelectionVO){
+    public String addNewReservationView(String login, String email, Model model, PrelectionWithIdDto prelectionWithIdDto){
         model.addAttribute("prelectionList", prelectionService.getAllPrelections());
-        model.addAttribute("prelectionVO", prelectionVO);
+        model.addAttribute("prelectionWithIdDto", prelectionWithIdDto);
         model.addAttribute("email",email);
         model.addAttribute("login",login);
         return "addnewreservation";

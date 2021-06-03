@@ -8,7 +8,7 @@ import pl.sii.it_conference.entity.TimeOfPrelection;
 @Getter
 @Setter
 @Builder
-public class PrelectionVO {
+public class PrelectionWithIdDto {
     private Long id;
     private String subjectOfPrelection;
     private TimeOfPrelection timeOfPrelection;

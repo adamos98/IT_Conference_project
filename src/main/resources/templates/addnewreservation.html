@@ -7,7 +7,7 @@
 <body>
 <h1>Dokonaj rezerwacji na prelekcję</h1>
 
-<form th:action="@{/addNewReservation}" th:method="post" th:object="${prelectionVO}">
+<form th:action="@{/addNewReservation}" th:method="post" th:object="${prelectionWithIdDto}">
     <select th:field="*{id}" id="id">
         <option th:each="prelection: ${prelectionList}" th:value="${prelection.id}"
                 th:text="${prelection.subjectOfPrelection} + ' (Od ' + ${prelection.timeOfPrelection.startOfPrelection} + ' Do ' + ${prelection.timeOfPrelection.endOfPrelection} + ')'">

@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserVO;
+import pl.sii.it_conference.dto.UserWithIdDto;
 import pl.sii.it_conference.service.UserService;
 
 import java.util.List;
@@ -19,20 +19,20 @@ public class UserController {
 
     @ApiOperation("Get user by id")
     @GetMapping("/{id}")
-    public UserVO getUserById(@PathVariable Long id){
+    public UserWithIdDto getUserById(@PathVariable Long id){
         return userService.getUserById(id);
     }
 
     @ApiOperation("Get user by login")
     @GetMapping("/login/{login}")
-    public UserVO getUserByLogin(@PathVariable String login){
+    public UserWithIdDto getUserByLogin(@PathVariable String login){
         return userService.findByLogin(login);
     }
 
     @ApiOperation("Save new user")
     @PostMapping("/addNewUser")
-    public ResponseEntity<UserVO> addNewUser(@RequestBody UserDto userDto){
-        UserVO response = userService.save(userDto);
+    public ResponseEntity<UserWithIdDto> addNewUser(@RequestBody UserDto userDto){
+        UserWithIdDto response = userService.save(userDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

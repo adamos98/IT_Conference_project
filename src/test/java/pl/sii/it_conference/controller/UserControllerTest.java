@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import pl.sii.it_conference.ModelUtils;
 import pl.sii.it_conference.TestConst;
-import pl.sii.it_conference.dto.UserVO;
+import pl.sii.it_conference.dto.UserWithIdDto;
 import pl.sii.it_conference.service.UserService;
 
 import java.util.List;
@@ -45,8 +45,8 @@ class UserControllerTest {
 
     @Test
     void getUserByIdTest() throws Exception {
-        UserVO userVO = ModelUtils.getUserVO();
-        when(userService.getUserById(1L)).thenReturn(userVO);
+        UserWithIdDto userWithIdDto = ModelUtils.getUserWithIdDto();
+        when(userService.getUserById(1L)).thenReturn(userWithIdDto);
         mockMvc.perform(get(userLink + "/{id}",1L))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L))
@@ -58,8 +58,8 @@ class UserControllerTest {
 
     @Test
     void getUserByLoginTest() throws Exception {
-        UserVO userVO = ModelUtils.getUserVO();
-        when(userService.findByLogin(TestConst.LOGIN)).thenReturn(userVO);
+        UserWithIdDto userWithIdDto = ModelUtils.getUserWithIdDto();
+        when(userService.findByLogin(TestConst.LOGIN)).thenReturn(userWithIdDto);
         mockMvc.perform(get(userLink + "/login/{login}",TestConst.LOGIN))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(1L))
@@ -71,7 +71,7 @@ class UserControllerTest {
 
     @Test
     void addNewUserTest() throws Exception {
-        when(userService.save(ModelUtils.getUserDto())).thenReturn(ModelUtils.getUserVO());
+        when(userService.save(ModelUtils.getUserDto())).thenReturn(ModelUtils.getUserWithIdDto());
         String content = "{\n"
                 + "  \"email\": \"tester@gmail.com\",\n"
                 + "  \"login\": \"Tester\"\n"

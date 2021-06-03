@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class UserVO {
+public class UserWithIdDto {
 
     private Long id;
 

@@ -7,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @Builder
-public class ReservationVO {
+public class ReservationWithIdDto {
     private Long id;
     private UserDto user;
     private PrelectionDto prelection;

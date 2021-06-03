@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.sii.it_conference.dto.PrelectionVO;
+import pl.sii.it_conference.dto.PrelectionWithIdDto;
 import pl.sii.it_conference.service.PrelectionService;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class PrelectionController {
 
     @ApiOperation("Show all prelections")
     @GetMapping("/getAll")
-    public ResponseEntity<List<PrelectionVO>> getAllPrelections(){
+    public ResponseEntity<List<PrelectionWithIdDto>> getAllPrelections(){
         return ResponseEntity.status(HttpStatus.OK).body(prelectionService.getAllPrelections());
     }
 

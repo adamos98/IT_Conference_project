@@ -41,7 +41,7 @@ class PrelectionControllerTest {
 
     @Test
     void getAllPrelectionsTest() throws Exception {
-        when(prelectionService.getAllPrelections()).thenReturn(List.of(ModelUtils.getPrelectionVO()));
+        when(prelectionService.getAllPrelections()).thenReturn(List.of(ModelUtils.getPrelectionWithIdDto()));
         mockMvc.perform(get(prelectionLink + "/getAll"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.length()").value(1))

@@ -6,7 +6,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
 import pl.sii.it_conference.dto.PrelectionDto;
-import pl.sii.it_conference.dto.PrelectionVO;
+import pl.sii.it_conference.dto.PrelectionWithIdDto;
 import pl.sii.it_conference.entity.Prelection;
 import pl.sii.it_conference.exceptions.NotFoundException;
 import pl.sii.it_conference.repository.PrelectionRepository;
@@ -21,8 +21,8 @@ public class PrelectionServiceImpl implements PrelectionService {
     private final ModelMapper modelMapper;
 
     @Override
-    public List<PrelectionVO> getAllPrelections() {
-        return modelMapper.map(prelectionRepository.findAll(),new TypeToken<List<PrelectionVO>>(){
+    public List<PrelectionWithIdDto> getAllPrelections() {
+        return modelMapper.map(prelectionRepository.findAll(),new TypeToken<List<PrelectionWithIdDto>>(){
         }.getType());
     }
 

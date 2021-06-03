@@ -7,7 +7,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
 import pl.sii.it_conference.dto.ReservationDto;
-import pl.sii.it_conference.dto.ReservationVO;
+import pl.sii.it_conference.dto.ReservationWithIdDto;
 import pl.sii.it_conference.dto.UserDto;
 import pl.sii.it_conference.entity.Prelection;
 import pl.sii.it_conference.entity.Reservation;
@@ -41,7 +41,7 @@ public class ReservationServiceImpl implements ReservationService {
     private final ModelMapper modelMapper;
 
     @Override
-    public ReservationVO addNewReservation(UserDto userDto, Long prelectionId) {
+    public ReservationWithIdDto addNewReservation(UserDto userDto, Long prelectionId) {
         Reservation reservation = modelMapper.map(new ReservationDto(),Reservation.class);
         Prelection prelection = prelectionRepository.findById(prelectionId).orElseThrow(() ->
                 new NotFoundException(ErrorMessage.PRELECTION_NOT_FOUND_BY_ID + prelectionId));
@@ -63,7 +63,7 @@ public class ReservationServiceImpl implements ReservationService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return modelMapper.map(created,ReservationVO.class);
+        return modelMapper.map(created, ReservationWithIdDto.class);
     }
 
     @Override
@@ -87,8 +87,8 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public List<ReservationVO> showReservationsByLogin(String login) {
-        return modelMapper.map(reservationRepository.findAllByUser_Login(login), new TypeToken<List<ReservationVO>>(){
+    public List<ReservationWithIdDto> showReservationsByLogin(String login) {
+        return modelMapper.map(reservationRepository.findAllByUser_Login(login), new TypeToken<List<ReservationWithIdDto>>(){
         }.getType());
     }
 
