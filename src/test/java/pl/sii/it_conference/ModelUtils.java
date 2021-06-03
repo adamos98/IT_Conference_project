@@ -1,8 +1,6 @@
 package pl.sii.it_conference;
 
-import pl.sii.it_conference.dto.PrelectionVO;
-import pl.sii.it_conference.dto.UserDto;
-import pl.sii.it_conference.dto.UserVO;
+import pl.sii.it_conference.dto.*;
 import pl.sii.it_conference.entity.TimeOfPrelection;
 
 import java.sql.Time;
@@ -41,5 +39,20 @@ public class ModelUtils {
                 .build();
     }
 
+    public static PrelectionDto getPrelectionDto(){
+        return PrelectionDto.builder()
+                .timeOfPrelection(getTimeOfPrelection())
+                .amountOfUsers(0L)
+                .subjectOfPrelection(TestConst.SUBJECTOFPRELECTION)
+                .build();
+    }
+
+    public static ReservationVO getReservationVO(){
+        return ReservationVO.builder()
+                .id(1L)
+                .prelection(getPrelectionDto())
+                .user(getUserDto())
+                .build();
+    }
 
 }

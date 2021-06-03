@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import pl.sii.it_conference.dto.ReservationDto;
 import pl.sii.it_conference.dto.ReservationVO;
 import pl.sii.it_conference.dto.UserDto;
 import pl.sii.it_conference.service.ReservationService;
