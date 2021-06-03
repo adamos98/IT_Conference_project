@@ -11,6 +11,6 @@ import pl.sii.it_conference.entity.TimeOfPrelection;
 public class PrelectionWithIdDto {
     private Long id;
     private String subjectOfPrelection;
-    private TimeOfPrelection timeOfPrelection;
+    private TimeOfPrelectionDto timeOfPrelection;
     private Long amountOfUsers;
 }

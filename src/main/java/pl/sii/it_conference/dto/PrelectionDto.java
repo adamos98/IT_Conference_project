@@ -11,6 +11,6 @@ import pl.sii.it_conference.entity.TimeOfPrelection;
 @EqualsAndHashCode
 public class PrelectionDto {
     private String subjectOfPrelection;
-    private TimeOfPrelection timeOfPrelection;
+    private TimeOfPrelectionDto timeOfPrelection;
     private Long amountOfUsers;
 }

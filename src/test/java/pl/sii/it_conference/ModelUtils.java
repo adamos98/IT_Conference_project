@@ -1,7 +1,6 @@
 package pl.sii.it_conference;
 
 import pl.sii.it_conference.dto.*;
-import pl.sii.it_conference.entity.TimeOfPrelection;
 
 import java.sql.Time;
 
@@ -27,23 +26,22 @@ public class ModelUtils {
                 .id(1L)
                 .subjectOfPrelection(TestConst.SUBJECTOFPRELECTION)
                 .amountOfUsers(0L)
-                .timeOfPrelection(getTimeOfPrelection())
+                .timeOfPrelection(getTimeOfPrelectionDto())
                 .build();
     }
 
-    public static TimeOfPrelection getTimeOfPrelection(){
-        return TimeOfPrelection.builder()
-                .id(1L)
+    public static TimeOfPrelectionDto getTimeOfPrelectionDto(){
+        return TimeOfPrelectionDto.builder()
                 .startOfPrelection(new Time(1,1,1))
-                .endOfPrelection(new Time(2,2,2))
+                .endOfPrelection(new Time(1,1,1))
                 .build();
     }
 
     public static PrelectionDto getPrelectionDto(){
         return PrelectionDto.builder()
-                .timeOfPrelection(getTimeOfPrelection())
                 .amountOfUsers(0L)
                 .subjectOfPrelection(TestConst.SUBJECTOFPRELECTION)
+                .timeOfPrelection(getTimeOfPrelectionDto())
                 .build();
     }
 

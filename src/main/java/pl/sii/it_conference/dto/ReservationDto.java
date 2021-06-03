@@ -10,6 +10,6 @@ import pl.sii.it_conference.entity.User;
 @Setter
 @Builder
 public class ReservationDto {
-    private User user;
-    private Prelection prelection;
+    private UserWithIdDto user;
+    private PrelectionWithIdDto prelection;
 }
