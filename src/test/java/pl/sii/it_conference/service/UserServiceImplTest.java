@@ -94,7 +94,12 @@ class UserServiceImplTest {
     void updateEmail() {
         when(userRepository.findByLogin(anyString())).thenReturn(Optional.of(user));
         when(userRepository.save(any())).thenReturn(user);
-
+        when(userRepository.findByLogin(user.getLogin())).thenReturn(Optional.of(user));
+        user.setEmail(TestConst.UPDATEDEMAIL);
+        when(modelMapper.map(user,UserDto.class)).thenReturn(userDto);
+        when(userService.updateEmail(userDto)).thenReturn(userDto);
+        assertEquals(userDto,userService.updateEmail(userDto));
+        verify(userRepository,times(2)).save(user);
     }
 
     @Test
