@@ -8,7 +8,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.modelmapper.ModelMapper;
-import pl.sii.it_conference.ModelUtils;
 import pl.sii.it_conference.TestConst;
 import pl.sii.it_conference.dto.UserDto;
 import pl.sii.it_conference.dto.UserWithIdDto;
@@ -53,8 +52,8 @@ class UserServiceImplTest {
             .build();
 
     private UserDto userDto = UserDto.builder()
-            .email(TestConst.EMAIL)
-            .login(TestConst.LOGIN)
+            .email("tester2@gmail.com")
+            .login("Tester2")
             .build();
 
     private String userEmail = user.getEmail();
@@ -88,16 +87,21 @@ class UserServiceImplTest {
         when(modelMapper.map(userWithIdDto,User.class)).thenReturn(user);
         when(userRepository.save(user)).thenReturn(user);
         when(modelMapper.map(user,UserDto.class)).thenReturn(userDto);
+        assertNull(userService.save(userDto));
     }
 
     @Test
     void updateEmail() {
         when(userRepository.findByLogin(anyString())).thenReturn(Optional.of(user));
         when(userRepository.save(any())).thenReturn(user);
+
     }
 
     @Test
     void getAllUsers() {
         when(userRepository.findAll()).thenReturn(List.of(user));
+        when(userService.getAllUsers()).thenReturn(List.of(userDto));
+        assertEquals(List.of(userDto),userService.getAllUsers());
+        verify(userRepository,times(2)).findAll();
     }
 }
