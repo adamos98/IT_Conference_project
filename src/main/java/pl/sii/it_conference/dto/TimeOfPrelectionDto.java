@@ -1,6 +1,5 @@
 package pl.sii.it_conference.dto;
 
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import java.sql.Time;

@@ -45,11 +45,6 @@ class UserServiceImplTest {
             .login("Tester2")
             .email("tester2@gmail.com")
             .build();
-    private User user2 = User.builder()
-            .id(1L)
-            .login("Testing")
-            .email("Testing@testing.com")
-            .build();
 
     private UserDto userDto = UserDto.builder()
             .email("tester2@gmail.com")
