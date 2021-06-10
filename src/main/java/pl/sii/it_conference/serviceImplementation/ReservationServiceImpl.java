@@ -6,6 +6,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import pl.sii.it_conference.constant.ErrorMessage;
+import pl.sii.it_conference.dto.PrelectionWithIdDto;
 import pl.sii.it_conference.dto.ReservationDto;
 import pl.sii.it_conference.dto.ReservationWithIdDto;
 import pl.sii.it_conference.dto.UserDto;
@@ -101,7 +102,7 @@ public class ReservationServiceImpl implements ReservationService {
         boolean flag = false;
         for(ReservationDto reservation : listOfReservations){
             flag = reservation.getUser().getId().equals(user.getId())
-                    && reservation.getPrelection().getTimeOfPrelection().equals(prelection.getTimeOfPrelection());
+                    && reservation.getPrelection().getTimeOfPrelection().equals(modelMapper.map(prelection, PrelectionWithIdDto.class).getTimeOfPrelection());
             if(flag)
                 break;
         }
